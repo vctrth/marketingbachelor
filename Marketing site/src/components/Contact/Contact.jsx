@@ -64,7 +64,7 @@ export default function Contact() {
       <div className="contact__inner">
         <div className="contact__left">
           <SectionHeader
-            label="Het team"
+            label="Contact"
             title={<>Meer weten over<br />Groene Vingers?</>}
             description="Heb je vragen over het project, het onderzoek of wil je het platform uitproberen als testgebruiker?"
             wide

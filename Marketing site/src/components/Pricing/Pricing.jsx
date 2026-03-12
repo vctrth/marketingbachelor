@@ -34,7 +34,7 @@ const plans = [
     features: [
       { text: 'Tuinen bekijken & zoeken', included: true },
       { text: 'Matchen met tuin eigenaar', included: false },
-      { text: 'Tuinlogboek behouden', included: false },
+      { text: 'Logboek behouden', included: false },
     ],
   },
   {
