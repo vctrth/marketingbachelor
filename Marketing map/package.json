@@ -1,0 +1,41 @@
+{
+  "name": "garden-matching-system",
+  "version": "1.0.0",
+  "description": "Location-based matching system with MapLibre and Supabase",
+  "private": true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "maplibre-gl": "^3.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.3.0",
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:status": "supabase status",
+    "supabase:deploy": "supabase functions deploy auto-match"
+  },
+  "keywords": [
+    "supabase",
+    "maplibre",
+    "matching",
+    "geolocation",
+    "postgis",
+    "realtime"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
