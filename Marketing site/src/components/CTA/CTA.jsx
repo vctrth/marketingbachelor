@@ -12,7 +12,7 @@ export default function CTA() {
           </p>
         </div>
         <div className="cta__buttons">
-          <Button variant="light" onClick={() => window.open('https://bachelorkaart.netlify.app/', '_blank')}>Ontdek het platform</Button>
+          <Button variant="light" onClick={() => window.open('https://bachelorkaart.netlify.app/', '_blank')}>Bekijk het aanbod</Button>
           <Button variant="outline-light" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>Neem contact op</Button>
         </div>
       </div>
