@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Button from '../Button/Button'
 import Toast from '../Toast/Toast'
-import logo from '../../assets/1b8bd55b78e3b301c14943aee24dbd92de9a8620.svg'
+import logo from '../../assets/logo_hero.svg'
 import './Navbar.css'
 
 export default function Navbar() {

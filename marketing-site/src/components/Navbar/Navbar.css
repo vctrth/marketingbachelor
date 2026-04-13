@@ -11,7 +11,6 @@
 
 .navbar__logo {
   height: 50px;
-  width: 56.538px;
 }
 
 .navbar__logo img {
@@ -30,12 +29,31 @@
   font-weight: 500;
   font-size: var(--text-h5);
   color: #000;
-  text-decoration: underline;
-  text-decoration-color: var(--surface-brand);
-  text-underline-offset: 4px;
-  text-decoration-thickness: 14%;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
   white-space: nowrap;
   cursor: pointer;
+  transition: color 220ms ease;
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--surface-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.navbar__link:hover::after,
+.navbar__link:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .navbar__actions {
