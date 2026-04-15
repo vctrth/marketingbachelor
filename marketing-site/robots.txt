@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://marketingbachelor.netlify.app/sitemap.xml
+Sitemap: https://groenevingers-app.be/sitemap.xml
