@@ -72,6 +72,20 @@ a.contact__info-item:hover {
 
 }
 
+.contact__right form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
+}
+
+.contact__hidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .contact__form-row {
   display: flex;
   gap: 17px;
@@ -139,6 +153,13 @@ a.contact__info-item:hover {
 
 .contact__textarea:focus {
   border-color: var(--surface-brand);
+}
+
+.contact__submit-error {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: #c0392b;
 }
 
 @keyframes inputFlash {

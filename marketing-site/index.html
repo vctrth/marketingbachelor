@@ -44,6 +44,14 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNCGDV52"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="voornaam" />
+      <input type="text" name="achternaam" />
+      <input type="email" name="email" />
+      <input type="text" name="rol" />
+      <textarea name="bericht"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

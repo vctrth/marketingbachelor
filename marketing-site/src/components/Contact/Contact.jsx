@@ -11,7 +11,7 @@ import './Contact.css'
 // Subscribe handled inline in the contact form (no separate SubscribeForm here)
 
 const contactItems = [
-  { icon: iconMail, text: 'info@groenevingers.be', href: 'mailto:info@groenevingers.be' },
+  { icon: iconMail, text: 'hi@groenevingers-app.be', href: 'mailto:hi@groenevingers-app.be' },
   { icon: iconPhone, text: '+32 456 32 38 61', href: 'tel:+32456323861' },
   { icon: iconDownload, text: 'Download het onderzoeksrapport', href: '/onderzoeksrapport.pdf', download: true },
   { icon: iconTest, text: 'Test het product', href: 'https://www.figma.com/proto/vNIODWdJhOTDoLXEP7bky6/Bachelorproef?page-id=679%3A498&node-id=979-1707&viewport=324%2C338%2C0.11&t=2JqO0qBYmzW9QupP-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=979%3A1707&show-proto-sidebar=0' },
@@ -20,6 +20,8 @@ const contactItems = [
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [shaking, setShaking] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [form, setForm] = useState({
     voornaam: '',
     achternaam: '',
@@ -32,6 +34,9 @@ export default function Contact() {
 
   const handleChange = (field) => (e) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }))
+    if (submitError) {
+      setSubmitError('')
+    }
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: false }))
     }
@@ -39,6 +44,11 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     if (e && e.preventDefault) e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if (isSubmitting) return
+
     const newErrors = {}
     Object.entries(form).forEach(([key, value]) => {
       if (!value.trim()) newErrors[key] = true
@@ -50,6 +60,32 @@ export default function Contact() {
       setTimeout(() => setShaking(false), 500)
       return
     }
+
+    setIsSubmitting(true)
+    setSubmitError('')
+
+    try {
+      const payload = new URLSearchParams({
+        'form-name': 'contact',
+        voornaam: form.voornaam,
+        achternaam: form.achternaam,
+        email: form.email,
+        rol: form.rol,
+        bericht: form.bericht,
+        'bot-field': '',
+      })
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: payload.toString(),
+      })
+
+      if (!response.ok) {
+        throw new Error('Submit failed')
+      }
 
     setSubmitted(true)
 
@@ -72,6 +108,15 @@ export default function Contact() {
 
     setForm({ voornaam: '', achternaam: '', email: '', rol: '', bericht: '' })
     setErrors({})
+      setSubmitted(true)
+      setForm({ voornaam: '', achternaam: '', email: '', rol: '', bericht: '' })
+      setErrors({})
+    } catch (error) {
+      console.error('Contact form submit failed:', error)
+      setSubmitError('Versturen mislukt. Probeer opnieuw of mail naar hi@groenevingers-app.be.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   useEffect(() => {
@@ -123,24 +168,37 @@ export default function Contact() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className={`contact__form ${shaking ? 'contact__form--shake' : ''}`}>
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <p className="contact__hidden">
+                <label>
+                  Niet invullen als je een mens bent:
+                  <input name="bot-field" onChange={() => {}} />
+                </label>
+              </p>
               <div className="contact__form-row">
                 <div className="contact__field">
                   <label className="contact__label">Voornaam</label>
-                  <input type="text" className={`contact__input ${errors.voornaam ? 'contact__input--error' : ''}`} value={form.voornaam} onChange={handleChange('voornaam')} />
+                  <input type="text" name="voornaam" className={`contact__input ${errors.voornaam ? 'contact__input--error' : ''}`} value={form.voornaam} onChange={handleChange('voornaam')} />
                 </div>
                 <div className="contact__field">
                   <label className="contact__label">Achternaam</label>
-                  <input type="text" className={`contact__input ${errors.achternaam ? 'contact__input--error' : ''}`} value={form.achternaam} onChange={handleChange('achternaam')} />
+                  <input type="text" name="achternaam" className={`contact__input ${errors.achternaam ? 'contact__input--error' : ''}`} value={form.achternaam} onChange={handleChange('achternaam')} />
                 </div>
               </div>
               <div className="contact__field contact__field--full">
                 <label className="contact__label">E-mailadres</label>
-                <input type="email" className={`contact__input ${errors.email ? 'contact__input--error' : ''}`} value={form.email} onChange={handleChange('email')} />
+                <input type="email" name="email" className={`contact__input ${errors.email ? 'contact__input--error' : ''}`} value={form.email} onChange={handleChange('email')} />
               </div>
               <div className="contact__field contact__field--full">
                 <label className="contact__label">Ik ben een...</label>
-                <select className={`contact__input contact__select ${errors.rol ? 'contact__input--error' : ''}`} value={form.rol} onChange={handleChange('rol')}>
+                <select name="rol" className={`contact__input contact__select ${errors.rol ? 'contact__input--error' : ''}`} value={form.rol} onChange={handleChange('rol')}>
                   <option value="" disabled></option>
                   <option value="tuineigenaar">Tuineigenaar</option>
                   <option value="tuinzoeker">Tuinzoeker</option>
@@ -148,15 +206,12 @@ export default function Contact() {
               </div>
               <div className="contact__field contact__field--full">
                 <label className="contact__label">Bericht</label>
-                <textarea className={`contact__textarea ${errors.bericht ? 'contact__input--error' : ''}`} value={form.bericht} onChange={handleChange('bericht')} />
+                <textarea name="bericht" className={`contact__textarea ${errors.bericht ? 'contact__input--error' : ''}`} value={form.bericht} onChange={handleChange('bericht')} />
               </div>
-              <div className="contact__field contact__field--full contact__subscribe-checkbox">
-                <label className="contact__label">
-                  <input type="checkbox" checked={subscribe} onChange={(e) => setSubscribe(e.target.checked)} />{' '}
-                  Ik wil updates ontvangen (abonneer op nieuwsbrief)
-                </label>
-              </div>
-              <Button variant="primary" fullWidth type="submit" className={shaking ? 'button--shake' : ''}>Verstuur een bericht</Button>
+              {submitError ? <p className="contact__submit-error">{submitError}</p> : null}
+              <Button variant="primary" type="submit" fullWidth disabled={isSubmitting} className={shaking ? 'button--shake' : ''}>
+                {isSubmitting ? 'Bezig met versturen...' : 'Verstuur een bericht'}
+              </Button>
             </form>
           )}
         </div>
