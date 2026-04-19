@@ -51,6 +51,19 @@ export async function handler(event) {
         status: 'active',
     }
 
+    // Allow optional custom fields to be forwarded to MailerLite.
+    // The client can include a `fields` object in the request body, e.g.
+    // { email, fields: { first_name: '...', last_name: '...', role: '...', message: '...' } }
+    try {
+        const body = JSON.parse(event.body || '{}')
+        const fields = body.fields
+        if (fields && typeof fields === 'object' && Object.keys(fields).length > 0) {
+            payload.fields = fields
+        }
+    } catch {
+        // ignore parsing errors here since we already parsed body earlier for email
+    }
+
     const groups = parseGroupIds()
     if (groups.length > 0) {
         payload.groups = groups

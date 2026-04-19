@@ -30,6 +30,7 @@ export default function Hero() {
       showToast('Dank je voor je inschrijving! We nemen snel contact op.')
       setEmail('')
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('MailerLite subscribe failed:', error)
       showToast(error.message || 'Inschrijving mislukt. Probeer het later opnieuw.')
     } finally {

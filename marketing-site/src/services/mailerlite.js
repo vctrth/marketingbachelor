@@ -1,11 +1,14 @@
-export async function upsertMailerLiteSubscriber(email) {
+export async function upsertMailerLiteSubscriber(email, fields) {
+    const body = { email }
+    if (fields && typeof fields === 'object') body.fields = fields
+
     const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify(body),
     })
 
     if (response.ok) {
