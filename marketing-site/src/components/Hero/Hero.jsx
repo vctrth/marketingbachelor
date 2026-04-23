@@ -4,7 +4,7 @@ import Button from '../Button/Button'
 import Toast from '../Toast/Toast'
 import { upsertMailerLiteSubscriber } from '../../services/mailerlite'
 import bgCircles from '../../assets/badb79d76cb3d7859a870ccf6e97a6a33bd0237b.svg'
-import plantImg from '../../assets/d0b4c2265cd3f4d0c3135c2314b1a3bc055f0b96.png'
+import plantImg from '../../assets/d0b4c2265cd3f4d0c3135c2314b1a3bc055f0b96.webp'
 import './Hero.css'
 
 export default function Hero() {
@@ -42,10 +42,10 @@ export default function Hero() {
     <section className="hero">
       <Toast message={toastMessage} visible={toastVisible} onClose={() => setToastVisible(false)} />
       <div className="hero__background">
-        <img src={bgCircles} alt="" />
+        <img src={bgCircles} alt="Decoratieve achtergrondcirkels" />
       </div>
       <div className="hero__plant">
-        <img src={plantImg} alt="Plant" />
+        <img src={plantImg} alt="Plant in een terracotta pot" />
       </div>
       <Navbar />
       <div className="hero__content">

@@ -18,7 +18,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__bg">
-        <img src={footerBg} alt="" />
+        <img src={footerBg} alt="Decoratieve footer achtergrond" />
       </div>
       <div className="footer__inner">
         <div className="footer__logo">
@@ -35,19 +35,19 @@ export default function Footer() {
           <div className="footer__contact">
             <a className="footer__contact-item" href="mailto:info@groenevingers.be">
               <div className="footer__contact-icon">
-                <img src={iconMail} alt="" />
+                <img src={iconMail} alt="E-mail icoon" />
               </div>
               <span className="footer__contact-text">info@groenevingers.be</span>
             </a>
             <a className="footer__contact-item" href="tel:+32456323861">
               <div className="footer__contact-icon">
-                <img src={iconPhone} alt="" />
+                <img src={iconPhone} alt="Telefoon icoon" />
               </div>
               <span className="footer__contact-text">+32 456 32 38 61</span>
             </a>
             <a className="footer__contact-item footer__contact-item--top" href="https://maps.google.com/?q=Merbeekstraat+1,+3360+Bierbeek" target="_blank" rel="noopener noreferrer">
               <div className="footer__contact-icon">
-                <img src={iconLocation} alt="" />
+                <img src={iconLocation} alt="Locatie icoon" />
               </div>
               <span className="footer__contact-text footer__contact-text--multiline">
                 {`Merbeekstraat 1,\n3360 Bierbeek`}

@@ -69,7 +69,7 @@ export default function Pricing() {
           {plans.map((plan, i) => (
             <div className="pricing__card" key={i}>
               <div className="pricing__card-icon">
-                <img src={plan.icon} alt="" />
+                <img src={plan.icon} alt={`Icoon van het ${plan.name} plan`} />
               </div>
               <div className="pricing__card-divider" />
               <div className="pricing__card-content">

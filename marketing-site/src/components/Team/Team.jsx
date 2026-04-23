@@ -1,7 +1,7 @@
 import SectionHeader from '../SectionHeader/SectionHeader'
-import photoArno from '../../assets/5268695094ed7bc20eac210bd6af6feec43ec8ef.png'
-import photoArthur from '../../assets/95d83a92d89021a3479eee7098d89583744f3624.png'
-import photoVictor from '../../assets/a69c3c323139704f74efdb0c7d297d1416af6b00.png'
+import photoArno from '../../assets/5268695094ed7bc20eac210bd6af6feec43ec8ef.webp'
+import photoArthur from '../../assets/95d83a92d89021a3479eee7098d89583744f3624.webp'
+import photoVictor from '../../assets/a69c3c323139704f74efdb0c7d297d1416af6b00.webp'
 import './Team.css'
 
 const members = [
@@ -45,7 +45,7 @@ export default function Team() {
               <div className="team__card-bottom">
                 <p className="team__card-bio">{member.bio}</p>
                 <div className="team__card-photo">
-                  <img src={member.photo} alt={member.name} />
+                  <img src={member.photo} alt={`Portret van ${member.name}`} />
                 </div>
               </div>
             </div>

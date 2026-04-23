@@ -1,8 +1,8 @@
 import { useState, useRef } from 'react'
 import SectionHeader from '../SectionHeader/SectionHeader'
-import avatarSarah from '../../assets/7746956e0d42a817b84f466a878904387dcbd54d.png'
-import avatarJohan from '../../assets/7fc96caa1a5aa21d4fb5b27dacefd7c18359c84f.png'
-import avatarLukas from '../../assets/8104644014ba87b524b93620d03688726e079f91.png'
+import avatarSarah from '../../assets/7746956e0d42a817b84f466a878904387dcbd54d.webp'
+import avatarJohan from '../../assets/7fc96caa1a5aa21d4fb5b27dacefd7c18359c84f.webp'
+import avatarLukas from '../../assets/8104644014ba87b524b93620d03688726e079f91.webp'
 import './Testimonials.css'
 
 const testimonials = [
@@ -70,7 +70,7 @@ export default function Testimonials() {
               <p className="testimonials__card-quote">{t.quote}</p>
               <div className="testimonials__card-author">
                 <div className="testimonials__card-avatar">
-                  <img src={t.avatar} alt={t.name} />
+                  <img src={t.avatar} alt={`Profielfoto van ${t.name}`} />
                 </div>
                 <div className="testimonials__card-info">
                   <span className="testimonials__card-name">{t.name}</span>

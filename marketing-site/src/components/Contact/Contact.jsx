@@ -115,7 +115,7 @@ export default function Contact() {
               const content = (
                 <>
                   <div className="contact__info-icon">
-                    <img src={item.icon} alt="" />
+                    <img src={item.icon} alt={`Icoon voor ${item.text}`} />
                   </div>
                   <span className="contact__info-text">{item.text}</span>
                 </>
@@ -135,7 +135,7 @@ export default function Contact() {
         <div className="contact__right">
           {submitted ? (
             <div className="contact__confirmation">
-              <img className="contact__confirmation-icon" src={plantIcon} alt="" />
+              <img className="contact__confirmation-icon" src={plantIcon} alt="Bevestigingsicoon van een plant" />
               <h3 className="contact__confirmation-title">Bedankt voor je bericht!</h3>
               <p className="contact__confirmation-text">
                 We hebben je bericht goed ontvangen en nemen zo snel mogelijk contact met je op.

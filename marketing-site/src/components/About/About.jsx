@@ -61,7 +61,7 @@ export default function About() {
         {cards.map((card, i) => (
           <div className="about__card" key={i}>
             <div className="about__card-icon">
-              <img src={card.icon} alt="" />
+              <img src={card.icon} alt={`Icoon: ${card.title}`} />
             </div>
             <div className="about__card-content">
               <h3 className="about__card-title">{card.title}</h3>

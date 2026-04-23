@@ -12,7 +12,7 @@ export default function Toast({ message, visible, onClose }) {
 
   return (
     <div className={`toast ${visible ? 'toast--visible' : ''}`}>
-      <img className="toast__icon" src={plantIcon} alt="" />
+      <img className="toast__icon" src={plantIcon} alt="Plant icoon" />
       <span className="toast__message">{message}</span>
     </div>
   )
