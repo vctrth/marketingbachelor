@@ -73,10 +73,6 @@ export default function Hero() {
               </Button>
             </span>
           </form>
-          <div className="hero__buttons">
-            <Button variant="primary" onClick={() => window.open('https://www.figma.com/proto/vNIODWdJhOTDoLXEP7bky6/Bachelorproef?page-id=679%3A498&node-id=979-1707&viewport=324%2C338%2C0.11&t=2JqO0qBYmzW9QupP-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=979%3A1707&show-proto-sidebar=0', '_blank')}>Ontdek de app</Button>
-            <Button variant="secondary" onClick={() => document.getElementById('hoe-werkt-het')?.scrollIntoView({ behavior: 'smooth' })}>Hoe werkt het?</Button>
-          </div>
         </div>
       </div>
     </section>
